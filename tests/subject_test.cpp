@@ -21,8 +21,7 @@
 #include "subject.h"
 
 
-// TODO: укажите здесь абсолютный путь к файлу с описанием предметов
-static const char* TEST_FNAME = "../../res/raw/subjects.txt";
+static const char* TEST_FNAME = "/Users/alexglushko/Desktop/task4_safearray/res/raw/subjects.txt";
 //static const char* TEST_FNAME = "F:\\GitAlgo\\safearray\\res\\raw\\subjects.txt";
 
 // число описаний курсов в файле
