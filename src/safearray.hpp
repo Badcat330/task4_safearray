@@ -64,7 +64,7 @@ SafeArray<T>::~SafeArray()
 template <typename T>
 size_t SafeArray<T>::getCapacity() const
 {
-    return SafeArray::_capacity;
+    return _capacity;
 }
 
 template <typename T>
