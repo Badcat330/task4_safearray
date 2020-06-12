@@ -25,10 +25,69 @@ namespace xi {
 template <typename T>
 SafeArray<T>::SafeArray(size_t cap)
 {
-
-    // TODO: здесь необходимо добавить реализацию метода
+    _storage = new T[cap];
+    _capacity = cap;
 }
 
-// TODO: реализуйте остальные методы по образцу выше
+template <typename T>
+SafeArray<T>::SafeArray(const xi::SafeArray<T> &safeArray)
+{
+    _storage = new T[safeArray._capacity];
+    for(int i = 0; i < safeArray._capacity; i++)
+    {
+        _storage[i] = safeArray._storage[i];
+    }
+
+    _capacity = safeArray._capacity;
+}
+
+template <typename T>
+SafeArray<T>& SafeArray<T>::operator=(const xi::SafeArray<T> &safeArray)
+{
+    _storage = new T[safeArray._capacity];
+    for(int i = 0; i < safeArray._capacity; i++)
+    {
+        _storage[i] = safeArray._storage[i];
+    }
+
+    _capacity = safeArray._capacity;
+
+    return *this;
+}
+
+template <typename T>
+SafeArray<T>::~SafeArray()
+{
+    delete[] _storage;
+}
+
+template <typename T>
+size_t SafeArray<T>::getCapacity() const
+{
+    return _capacity;
+}
+
+template <typename T>
+void SafeArray<T>::checkBounds(size_t index) const
+{
+    if(index < 0 || index >= _capacity)
+    {
+        throw std::out_of_range("Index out of range");
+    }
+}
+
+template <typename T>
+T& SafeArray<T>::operator[](size_t k)
+{
+    checkBounds(k);
+    return _storage[k];
+}
+
+template <typename T>
+const T& SafeArray<T>::operator[](size_t k) const
+{
+    checkBounds(k);
+    return _storage[k];
+}
 
 } // namespace xi
